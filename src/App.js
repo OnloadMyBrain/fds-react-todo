@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import TodoList from './components/TodoList';
 import axios from 'axios';
 
-const todoAPI = axios.create({
-  baseURL : 'https://plastic-sandwich.glitch.me/'
-});
 let count = 0;
+
+const todoAPI = axios.create({
+  baseURL : process.env.REACT_APP_PI_URL
+});
 
 class App extends Component {
   state = {
