@@ -57,9 +57,7 @@ export default class TodoPage extends Component {
    this.setState({
      loading: true
    });
-   await todoAPI.patch(`/todos/${id}`, {
-     body
-   })
+   await todoAPI.delete(`todos/${id}`)
    await this.fetchTodos();
  }
 
@@ -68,7 +66,7 @@ export default class TodoPage extends Component {
       loading: true
     })
     await todoAPI.patch(`/todos/${id}`, {
-      complete: true
+      complete : true
     })
     await this.fetchTodos();
   };
@@ -77,7 +75,9 @@ export default class TodoPage extends Component {
     this.setState({
       loading: true
     })
-    await todoAPI.delete(`todos/${id}`)
+    await todoAPI.patch(`/todos/${id}`, {
+      complete: true
+    })
     await this.fetchTodos();
   }
   render() {
