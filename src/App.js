@@ -10,6 +10,7 @@ const todoAPI = axios.create({
 
 class App extends Component {
   state = {
+    page : 'login',
     loading : false,
     todos: [
       // {
@@ -26,8 +27,22 @@ class App extends Component {
     newTodoBody: ''
   }
 
+  goToTodoPage = () => {
+    this.setState({
+      page:'login'
+    })
+    // render(){
+    //   return(
+    //     <div>
+    //       <input type="text">
+    //       <input type="password">
+    //     </div>
+    //   )
+    // }
+  }
+
   async componentDidMount(){
-    await this.fetchTodos();
+    await this.fetchTodos()
   }
 
   fetchTodos = async() => {
@@ -65,6 +80,16 @@ class App extends Component {
     }
   }
 
+  handleTodoItemBodyUpdate = async (id, body) => {
+    this.setState({
+      loading: true
+    });
+    await todoAPI.patch(`/todos/${id}`, {
+      body
+    });
+    await this.fetchTodos();
+  }
+
   handleTodoItemComplete = async id => {
     this.setState({
       loading : true
@@ -95,23 +120,33 @@ class App extends Component {
   }
 
   render() {
-    const {todos, newTodoBody, loading} = this.state;
+    const {todos, newTodoBody, loading, page} = this.state;
     return (
       <div>
-        <h1>할 일 목록</h1>
-        <label>
-          새 할일
-          <input type="text" value={newTodoBody} onChange={this.handleInputChange} />
-          <button onClick={this.handleButtonClick}>추가</button>
-        </label>
-        {loading ? (
-          <div>loading...</div>
+        {page === 'login' ? (
+          <div>
+            <button onClick={this.goToTodoPage}>로그인</button>
+          </div>
         ) : (
-          <TodoList 
-            todos={todos} 
-            handleTodoItemComplete={this.handleTodoItemComplete}
-            handleTodoItemDelete={this.handleTodoItemDelete}
-          />
+          <React.Fragment>
+            <h1>할 일 목록</h1>
+            <label>
+              새 할일
+              <input type="text" value={newTodoBody} onChange={this.handleInputChange} />
+              <button onClick={this.handleButtonClick}>추가</button>
+              
+            </label>
+            {loading ? (
+              <div>loading...</div>
+            ) : (
+              <TodoList 
+                todos={todos} 
+                handleTodoItemComplete={this.handleTodoItemComplete}
+                handleTodoItemDelete={this.handleTodoItemDelete}
+                handleTodoItemBodyUpdate={this.handleTodoItemBodyUpdate}
+              />
+            )}
+          </React.Fragment>
         )}
       </div>
     );

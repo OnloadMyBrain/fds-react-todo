@@ -6,7 +6,8 @@ export default class TodoList extends Component {
 			const {
 				todos,
 				handleTodoItemComplete,
-				handleTodoItemDelete
+				handleTodoItemDelete,
+				handleTodoItemBodyUpdate
 			} = this.props;
 			return (
 				<ul>
