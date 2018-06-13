@@ -9,7 +9,7 @@ export default class TodoItem extends Component {
   render() {
     const { id, body, complete, onComplete, onDelete } = this.props;
     return (
-      <li className={complete ? "complete" : ""} key={id}>
+      <li className={complete ? 'complete' : ''} key={id}>
        <span onClick={this.handleBodyClick}>{body}</span>
         <button
           onClick={e => {

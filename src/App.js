@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import TodoPage from "./pages/TodoPage";
-import LoginPage from "./pages/LoginPage";
+import TodoPage from './pages/TodoPage';
+import LoginPage from './pages/LoginPage';
 
 export default class App extends React.Component{
   state = {
