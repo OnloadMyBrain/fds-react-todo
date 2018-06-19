@@ -18,7 +18,7 @@ class UserProvider extends React.Component {
     localStorage.setItem('token', res.data.token);
     
     // 페이지 전환
-    this.props.onLogin();
+    // this.props.onLogin();
   }
 
   render() {

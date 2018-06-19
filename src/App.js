@@ -5,24 +5,24 @@ import LoginPage from './pages/LoginPage';
 
 import {PageProvider, PageConsumer} from './contexts/PageContext';
 import {UserProvider} from './contexts/UserContext';
+import TodoProvider, { TodoConsumer } from './contexts/TodoContext';
+import TodoContainer from './containers/TodoContainer';
 
 class App extends Component {
   render() {
     return (
       <PageProvider>
-        <PageConsumer>
-          {value => (
-            <UserProvider onLogin={value.goToTodoPage}>
-              {
-                value.page === 'login' ? (
-                  <LoginPage />
-                ) : (
-                  <TodoPage />
-                )
-              }
-            </UserProvider>
-          )}
-        </PageConsumer>
+        <UserProvider>
+          <TodoProvider>
+          <PageConsumer>
+            {value => value.page === 'login' ? (
+              <LoginPage />
+            ) : (
+              <TodoPage />
+            )}
+          </PageConsumer>
+          </TodoProvider>
+        </UserProvider>
       </PageProvider>
     )
   }
