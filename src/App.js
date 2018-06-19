@@ -5,15 +5,13 @@ import LoginPage from './pages/LoginPage';
 
 import {PageProvider, PageConsumer} from './contexts/PageContext';
 import {UserProvider} from './contexts/UserContext';
-import TodoProvider, { TodoConsumer } from './contexts/TodoContext';
-import TodoContainer from './containers/TodoContainer';
+// import {TodoProvider} from './contexts/TodoContext';
 
 class App extends Component {
   render() {
     return (
       <PageProvider>
         <UserProvider>
-          <TodoProvider>
           <PageConsumer>
             {value => value.page === 'login' ? (
               <LoginPage />
@@ -21,7 +19,6 @@ class App extends Component {
               <TodoPage />
             )}
           </PageConsumer>
-          </TodoProvider>
         </UserProvider>
       </PageProvider>
     )
