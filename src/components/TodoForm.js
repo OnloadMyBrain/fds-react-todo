@@ -1,9 +1,14 @@
 import React from 'react';
 
 export default class TodoForm extends React.Component {
+  static defaultProps = {
+    onCreate: () => {}  // 할일 추가버튼 클릭 시 호출되는 함수
+  }
+  
   state = {
       newTodoBody: ''
   }
+
   handleInputChange = e => {
       this.setState({
           newTodoBody: e.target.value

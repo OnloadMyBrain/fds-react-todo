@@ -1,10 +1,12 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-// import { action } from '@storybook/addon-actions';
-// import { linkTo } from '@storybook/addon-links';
+import { action } from '@storybook/addon-actions';
+import { linkTo } from '@storybook/addon-links';
 
-import LoginForm from './LoginForm';
+import TodoItem from './TodoItem';
 
-storiesOf('LoginForm', module)
-  .add('empty', () => <LoginForm />);
+storiesOf('TodoItem', module)
+  .add('empty', () => <TodoItem id={1} onComplete={action('완료된 버튼 클릭됨')} />)
+  .add('body가 주어진 경우', () => <TodoItem body="텍스트" />)
+  .add('완료된 경우', () => <TodoItem body="완료됨" />)

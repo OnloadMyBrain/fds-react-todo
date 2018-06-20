@@ -32,7 +32,7 @@ class App extends Component {
       <BrowserRouter>
         <UserProvider>
           <Route path="/login" component={LoginPage} />
-          <Route path="/todo" render={() => <TodoPage title="My Title" />} />
+          <Route path="/todo" render={() => <TodoPage />} />
           <Route exact path="/" component={Home} />
         </UserProvider>
       </BrowserRouter>
