@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {Redirect} from 'react-router-dom';
 import TodoList from '../components/TodoList';
 import TodoForm from '../components/TodoForm';
 import {TodoConsumer} from '../contexts/TodoContext';
@@ -28,4 +29,3 @@ export default class TodoContainer extends React.Component {
     );
   }
 }
-
