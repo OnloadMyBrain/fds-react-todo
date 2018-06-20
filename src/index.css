@@ -9642,10 +9642,6 @@ body {
 
 .complete {
   color: blue;
-}
-
-.complete span {
-  color: red;
-  background: red;
+  text-decoration: line-through;
 }
 /*# sourceMappingURL=index.css.map */

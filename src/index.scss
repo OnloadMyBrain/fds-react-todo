@@ -9,8 +9,5 @@ body {
 
 .complete {
   color: blue;
-  span{
-    color:red;
-    background: red;
-  }
+  text-decoration: line-through;
 }

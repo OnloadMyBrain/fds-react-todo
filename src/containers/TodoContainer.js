@@ -10,7 +10,7 @@ export default class TodoContainer extends React.Component {
     return (
       <TodoConsumer>
         {({todos, loading, createTodo, completeTodo, deleteTodo, updateTodoBody}) => (
-          <div>
+          <React.Fragment>
             <h1>할 일 목록</h1>
             <TodoForm onCreate={createTodo}/>
             {loading ? (
@@ -23,7 +23,7 @@ export default class TodoContainer extends React.Component {
                 onTodoBodyUpdate={updateTodoBody}
               />
               )}
-          </div>
+          </React.Fragment>
         )}
       </TodoConsumer>
     );
